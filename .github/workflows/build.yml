@@ -19,10 +19,3 @@ jobs:
         run: |
           cd zygisk
           ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=Android.mk
-
-      - name: Upload .so artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: zygisk-lib
-          path: |
-            zygisk/libs/**/*.so
