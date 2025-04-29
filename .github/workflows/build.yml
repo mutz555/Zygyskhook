@@ -1,6 +1,4 @@
-
-                                                                                      - name: Upload .so
-                 name: Build Zygisk Module
+name: Build Zygisk Module
 
 on:
   push:
@@ -26,7 +24,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: libfingerprint_bypass
-          path: zygisk/libs/arm64-v8a/libfingerprint_bypass.so                                                                             uses: actions/upload-artifact@v3
-                                                                                                      with:
-                                                                                                                name: libfingerprint_bypass
-                                                                                                                          path: zygisk/libs/arm64-v8a/libfingerprint_bypass.so
+          path: zygisk/libs/arm64-v8a/libfingerprint_bypass.so
