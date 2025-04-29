@@ -1,27 +1,32 @@
-name: Build Zygisk Module
+
+                                                                                      - name: Upload .so
+                 name: Build Zygisk Module
 
 on:
   push:
-      paths:
-            - 'zygisk/**'
-                  - '.github/workflows/**'
+    paths:
+      - 'zygisk/**'
+      - '.github/workflows/**'
 
-                  jobs:
-                    build:
-                        runs-on: ubuntu-latest
-                            container: ghcr.io/android/ndk:r25b
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/android/ndk:r25b
 
-                                steps:
-                                      - name: Checkout
-                                              uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-                                                    - name: Build with ndk-build
-                                                            run: |
-                                                                      cd zygisk
-                                                                                ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=Android.mk
+      - name: Build with ndk-build
+        run: |
+          cd zygisk
+          ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=Android.mk
 
-                                                                                      - name: Upload .so
-                                                                                              uses: actions/upload-artifact@v3
+      - name: Upload .so
+        uses: actions/upload-artifact@v3
+        with:
+          name: libfingerprint_bypass
+          path: zygisk/libs/arm64-v8a/libfingerprint_bypass.so                                                                             uses: actions/upload-artifact@v3
                                                                                                       with:
                                                                                                                 name: libfingerprint_bypass
                                                                                                                           path: zygisk/libs/arm64-v8a/libfingerprint_bypass.so
